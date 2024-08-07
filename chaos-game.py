@@ -4,7 +4,7 @@ import math
 import colorsys
 from pygame.locals import *
 
-idx = [0, 0, 0]
+idx = [0,0,0]
 
 
 def mark_pixel(surface, pos, pcol):
@@ -18,7 +18,6 @@ def random_point_index(p):
     if len(p) <= 3:
         return random.randint(0, len(p) - 1)
 
-    global idx
     idx[2] = idx[1]
     idx[1] = idx[0]
     dst1 = abs(idx[1] - idx[2])
