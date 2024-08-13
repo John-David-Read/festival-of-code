@@ -4,4 +4,5 @@
     "--enable=F,E,unreachable,duplicate-key,unnecessary-semicolon,global-variable-not-assigned,unused-variable,binary-op-exception,bad-format-string,anomalous-backslash-in-string,bad-open-mode",
     "--unsafe-load-any-extension=y", //or add this one: --extension-pkg-whitelist=pygame
       ],
+      "python.pythonPath": "C:\\Program Files\\Python_3_7_4\\python.exe",
 }
