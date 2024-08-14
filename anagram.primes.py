@@ -41,4 +41,4 @@ for word in word_file:
     word = word.rstrip('\r\n')
     word_id = get_word_id(word)
     if word_id == target_word_id:
-        print(word)sympathetic
+        print(word)
