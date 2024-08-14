@@ -35,7 +35,7 @@ def get_word_id(word):
 target_word = input("Enter a word: ")
 target_word_id = get_word_id(target_word.lower())
 
-word_file = open(r"Resource\words-alpha.txt", "r")
+word_file = open("Resource/words-alpha.txt", "r")
 
 for word in word_file:
     word = word.rstrip('\r\n')
