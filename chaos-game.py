@@ -74,7 +74,7 @@ def main(width, height, n, r):
 
         for event in pygame.event.get():
             if event.type == QUIT:
-                pygame.image.save(surface, 'Resource\chaosspiel.jpg')
+                pygame.image.save(surface, 'Resource/chaosspiel.jpg')
                 pygame.quit()
                 return
 
