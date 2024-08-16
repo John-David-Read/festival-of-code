@@ -14,7 +14,7 @@ def is_prime(n):
         i += 1
     return True
 
-for n in range(2,1001):
+for n in range(2,10001):
     current = str(n)
 
     is_right_trunc_prime = True
