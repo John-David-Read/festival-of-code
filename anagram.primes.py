@@ -1,4 +1,5 @@
 import math
+import random
 
 def is_prime(n):
     """
@@ -32,13 +33,25 @@ def get_word_id(word):
         product = product * letter_id[letter]
     return product
 
-target_word = input("Enter a word: ")
-target_word_id = get_word_id(target_word.lower())
 
-word_file = open("Resource/words-alpha.txt", "r")
+def Target():
+    with open("Resource/words-alpha.txt", "r") as file: 
+        allText = file.read() 
+        words = list(map(str, allText.split())) 
+    target_word = random.choice(words)
+    print(target_word,end = " [ ")
+    return target_word
 
-for word in word_file:
-    word = word.rstrip('\r\n')
-    word_id = get_word_id(word)
-    if word_id == target_word_id:
-        print(word)
+def Anagrams(target_word):
+    word_file = open("Resource/words-alpha.txt", "r")
+    target_word_id = get_word_id(target_word.lower())
+    for word in word_file:
+        word = word.rstrip('\r\n')
+        word_id = get_word_id(word)
+        if word_id == target_word_id:
+            print(word,end = " ")
+    print("]")
+    return ()
+
+for x in range (100):
+    Anagrams(Target())
