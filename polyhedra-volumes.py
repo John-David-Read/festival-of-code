@@ -43,7 +43,6 @@ faces_tetra = np.array([
     [1, 2, 3]
 ])
 
-print(vertices_tetra)
 print("Volume of the polyhedron:", polyhedron_volume(vertices_tetra, faces_tetra))
 
 r = 1
