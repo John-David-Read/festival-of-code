@@ -1,4 +1,5 @@
 import numpy as np
+import scipy.spatial as sp
 
 def triangle_area(a, b, c):
     # Calculate the area of a triangle using the cross product
@@ -61,8 +62,7 @@ vertices_tetra = np.array([vertex_1,
                   vertex_4
 ])
 
-print(vertices_tetra)
-print(round(v_sphere,3))
+print("Volume of unit sphere",round(v_sphere,3))
 v_shape = polyhedron_volume(vertices_tetra, faces_tetra)
 print("Volume of the polyhedron:",v_shape,", ratio of volume of sphere",v_shape/v_sphere)
 print("Surface area of the polyhedron:", polyhedron_surface_area(vertices_tetra, faces_tetra))

@@ -1,9 +1,9 @@
 import matplotlib.pyplot as pp
 import numpy as np
-from scipy.spatial import ConvexHull as ch
+import scipy.spatial as sp
 from math import pi , cos , sin , sqrt
 
-def fibonacci_sphere(samples=40):
+def fibonacci_sphere(samples=200):
     points = np.empty((0,3))
     phi = pi * (sqrt(5.) - 1.)                  # golden angle in radians
     for i in range(samples):
@@ -16,7 +16,7 @@ def fibonacci_sphere(samples=40):
     return points
 
 s_a = fibonacci_sphere()
-hull = ch(s_a)
+hull = sp.ConvexHull(s_a)
 
 pp.rcParams["figure.figsize"] = [10.00, 10.00]
 pp.rcParams["figure.autolayout"] = True
