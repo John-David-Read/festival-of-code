@@ -1,4 +1,4 @@
-import math
+from math import sqrt
 import random
 
 def is_prime(n):
@@ -8,7 +8,7 @@ def is_prime(n):
     if n<2:
         return False
     i=2
-    while i<=math.sqrt(n):
+    while i<= sqrt(n):
         if n % i == 0:
             return False
         i += 1
