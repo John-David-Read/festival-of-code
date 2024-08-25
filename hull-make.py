@@ -76,24 +76,36 @@ def repel(n):
             break
     return(vert)
 
-n = 4
-vert = repel(n)
-hull = sp.ConvexHull(vert)
-face = np.empty((0,3))
-for f in hull.simplices:
-    face = np.vstack([face,f])
-face = face.astype(int)
+def shape(pts):
+    vert = repel(pts)
+    hull = sp.ConvexHull(vert)
+    face = np.empty((0,3))
+    for f in hull.simplices:
+        face = np.vstack([face,f])
+    face = face.astype(int)
+    return (vert,hull,face)
 
-v_shape = polyhedron_volume(vert, face)
-sa_shape = polyhedron_surface_area(vert, face)
-print("vertices of the polyhedron",n,"Volume of the polyhedron:",v_shape,"Surface area of the polyhedron:",sa_shape)
+def vlist(pts,vert,hull,face):
+    v_shape = polyhedron_volume(vert, face)
+    sa_shape = polyhedron_surface_area(vert, face)
+    print("vertices:",pts,"Volume:",v_shape,"Surface Area:",sa_shape)
 
-pp.rcParams["figure.figsize"] = [10.00, 10.00]
-pp.rcParams["figure.autolayout"] = True
-fig = pp.figure()
-ax = fig.add_subplot(projection='3d')
-ax.plot(vert[:,0],vert[:,1],vert[:,2],"ko")
-for sx in hull.simplices:
-    sx = np.append(sx,sx[0])
-    pp.plot(vert[sx,0],vert[sx,1],vert[sx,2],'k-')
-pp.show()
+def plot(vert,hull):
+    pp.rcParams["figure.figsize"] = [10.00, 10.00]
+    pp.rcParams["figure.autolayout"] = True
+    fig = pp.figure()
+    ax = fig.add_subplot(projection='3d')
+    ax.plot(vert[:,0],vert[:,1],vert[:,2],"ko")
+    for sx in hull.simplices:
+        sx = np.append(sx,sx[0])
+        pp.plot(vert[sx,0],vert[sx,1],vert[sx,2],'k-')
+    pp.show()
+
+p = 20
+
+for n in range (4,p+1):
+    v, h, f = shape(n)
+    vlist(n,v,h,f)
+
+v, h, f = shape(8)
+plot(v,h)
