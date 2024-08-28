@@ -1,5 +1,4 @@
 from numpy import pi, cos, sin, arccos, arange
-import mpl_toolkits.mplot3d
 import matplotlib.pyplot as pp
 
 num_pts = 1000

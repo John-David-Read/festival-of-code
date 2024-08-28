@@ -1,8 +1,6 @@
 # Distribute a set of points randomly across a sphere, allow them to mutually repel and find equilibrium.
-import sys
-import string
 import random
-from math import pi, asin, atan2, cos, sin, sqrt
+from math import pi, asin, cos, sin, sqrt
 import matplotlib.pyplot as pp
 import numpy as np
 
@@ -22,7 +20,8 @@ while True:
         f = (0,0,0)
         ftotal = 0
         for j in range(len(points)):
-            if j == i: continue
+            if j == i: 
+                continue
             q = points[j]
             dv = (p[0]-q[0], p[1]-q[1], p[2]-q[2])
             dl = sqrt(dv[0]**2 + dv[1]**2 + dv[2]**2)

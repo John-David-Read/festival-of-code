@@ -1,5 +1,4 @@
 import numpy as np
-import scipy.spatial as sp
 
 def triangle_area(a, b, c):
     # Calculate the area of a triangle using the cross product

@@ -1,6 +1,6 @@
 import random
 import numpy as np
-from math import pi, asin, cos, sin, sqrt
+from math import pi, asin, acos, cos, sin, sqrt
 import scipy.spatial as sp
 import matplotlib.pyplot as pp
 
@@ -102,11 +102,34 @@ def plot(vert,hull):
         pp.plot(vert[sx,0],vert[sx,1],vert[sx,2],'k-')
     pp.show()
 
+def minshapeeight():
+    vm = np.empty((0,3))
+    phi = acos(sqrt((15+sqrt(145))/40))
+    vm = np.vstack([vm,[sin(3*phi),0,cos(3*phi)]])
+    vm = np.vstack([vm,[sin(phi),0,cos(phi)]])
+    vm = np.vstack([vm,[-sin(phi),0,cos(phi)]])
+    vm = np.vstack([vm,[-sin(3*phi),0,cos(3*phi)]])
+    vm = np.vstack([vm,[0,-sin(3*phi),-cos(3*phi)]])
+    vm = np.vstack([vm,[0,-sin(phi),-cos(phi)]])
+    vm = np.vstack([vm,[0,sin(phi),-cos(phi)]])
+    vm = np.vstack([vm,[0,sin(3*phi),-cos(3*phi)]])
+    hm = sp.ConvexHull(vm)
+    fm = np.empty((0,3))
+    for f in hm.simplices:
+        fm = np.vstack([fm,f])
+    fm = fm.astype(int)
+    return vm, hm, fm
+
 p = 20
 
-for n in range (4,p+1):
-    v, h, f = shape(n)
-    vlist(n,v,h,f)
+#for n in range (4,p+1):
+#    v, h, f = shape(n)
+#    vlist(n,v,h,f)
 
 v, h, f = shape(8)
-plot(v,h)
+vlist(len(v),v,h,f)
+
+v2, h2, f2 = minshapeeight()
+vlist(len(v2),v2,h2,f2)
+
+plot(v2,h2)
