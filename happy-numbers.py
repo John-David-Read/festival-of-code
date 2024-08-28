@@ -25,13 +25,13 @@ for sads in [20, 4, 16, 37, 58, 89, 145, 42, 20]:
     G.add_node(sads, label = sads)
     G.add_edge(sads, nxt(sads))
 for i in range(1,10000):
-    h,l = happy(i)
+    h, t = happy(i)
     #if h:
     #    print(":)",i,l)
     #else:
     #    print("  ",i,l)
 
-    for j in l:
+    for j in t:
         if j not in values:
             G.add_node(j, label=j)
             G.add_edge(j,nxt(j))
@@ -39,7 +39,7 @@ for i in range(1,10000):
 #for n in G:
 #    G.node[n]['name'] = n
 
-pos = nx.shell_layout(G)
+pos = nx.spring_layout(G)
 nx.draw_networkx_nodes(G, pos)
 nx.draw_networkx_labels(G, pos, labels=nx.get_node_attributes(G, 'label'))
 nx.draw_networkx_edges(G, pos)
