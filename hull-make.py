@@ -1,6 +1,6 @@
 import random
 import numpy as np
-from math import pi, asin, atan2, cos, sin, sqrt
+from math import pi, asin, cos, sin, sqrt
 import scipy.spatial as sp
 import matplotlib.pyplot as pp
 
@@ -47,7 +47,8 @@ def repel(n):
             f = (0,0,0)
             ftotal = 0
             for j in range(len(vert)):
-                if j == i: continue
+                if j == i: 
+                    continue
                 q = vert[j]
                 dv = (p[0]-q[0], p[1]-q[1], p[2]-q[2])
                 dl = sqrt(dv[0]**2 + dv[1]**2 + dv[2]**2)
