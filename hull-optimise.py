@@ -3,6 +3,7 @@ import random
 from math import pi, sin, cos, asin, acos, sqrt
 import scipy.spatial as sp
 import scipy.optimize as op
+import matplotlib.pyplot as pp
 
 # Function to calculate the volume of a polyhedron given its vertices
 def polyhedron_volume(vertices):
@@ -29,11 +30,18 @@ def angle_random(n):
 # function to return the polyhedron volume given the angles
 def volume(angle):
     return (polyhedron_volume(angle_vertices(angle)))
-     
-# Initial guess for the vertices (random points on the unit sphere)
-n = 8  # Number of vertices
-angle = angle_random(n)
-print(volume(angle))
+
+# function to plot the shape
+def plot(vert,hull):
+    pp.rcParams["figure.figsize"] = [10.00, 10.00]
+    pp.rcParams["figure.autolayout"] = True
+    fig = pp.figure()
+    ax = fig.add_subplot(projection='3d')
+    ax.plot(vert[:,0],vert[:,1],vert[:,2],"ko")
+    for sx in hull.simplices:
+        sx = np.append(sx,sx[0])
+        pp.plot(vert[sx,0],vert[sx,1],vert[sx,2],'k-')
+    pp.show()
 
 vm = np.empty((0,3))
 phi = acos(sqrt((15+sqrt(145))/40))
@@ -46,19 +54,26 @@ vm = np.vstack([vm,[0,-sin(phi),-cos(phi)]])
 vm = np.vstack([vm,[0,sin(phi),-cos(phi)]])
 vm = np.vstack([vm,[0,sin(3*phi),-cos(3*phi)]])
 
-#print(vm)
-#print(len(vm))
-#print(polyhedron_volume(vm))
+# print the exact volume for the known 8 vertex shape
+ print(round(polyhedron_volume(vm),12))
 
-# Define the constraints and bounds
-#bounds = [(-1, 1)] * len(vert)
+for n in range(4,8):
 
-# Optimize the volume
-#result = op.minimize(lambda x: -polyhedron_volume(x.reshape(-1, 3)), vert, constraints=constraints, bounds=bounds)
+     Initial guess for the vertices (random points on the unit sphere)
+    angle = angle_random(n)
 
-# Get the optimized vertices
-#optimized_vertices = result.x.reshape(-1, 3)
+    # Define the bounds for the string of angles
+    bounds = []
+    bounds = [(0, 2*pi),(-pi/2,pi/2)] * n
 
-#print("Optimized vertices:")
-#print(optimized_vertices)
-#print("Maximized volume:", -result.fun)
+    # Optimize the volume
+    result = op.minimize(lambda x: -volume(x), angle, bounds=bounds,tol=0.000000000000000001)
+    
+    # Get the optimized angles
+    optimized_angles = result.x
+
+    # Print the optimized angle volume
+    print(n,"|",round(volume(optimized_angles),12))
+
+# Plot the shape
+# plot(angle_vertices(optimized_angles),sp.ConvexHull(angle_vertices(optimized_angles)))
