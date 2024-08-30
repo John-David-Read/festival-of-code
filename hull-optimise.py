@@ -90,6 +90,17 @@ for n in range(4,16):
                     ,volume(result_9.x)
                     ,volume(result_10.x))))
 
+#rerun for n is 9 , the first unproven maxium
+n = 9
+angle = angle_random(n)
+bounds = []
+bounds = [(0, 2*pi),(-pi/2,pi/2)] * n
+result = op.minimize(lambda x: -volume(x), angle, bounds=bounds,tol=0.000000000000000001)
+print("")
+print(n,"|",'{0:1.13g}'.format(volume(result.x)))
+print(9,"|",'{0:1.13g}'.format(3 * sqrt(2*sqrt(3)-3)), "exact")
+                                   
 # Plot the shape
-# optimised_vertices = result_1.x
-# plot(angle_vertices(optimized_angles),sp.ConvexHull(angle_vertices(optimized_angles)))
+optimised_angles = result.x
+optimised_vertices = angle_vertices(optimised_angles)
+plot(optimised_vertices,sp.ConvexHull(optimised_vertices))

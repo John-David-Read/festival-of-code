@@ -122,9 +122,9 @@ def minshapeeight():
 
 p = 20
 
-#for n in range (4,p+1):
-#    v, h, f = shape(n)
-#    vlist(n,v,f)
+for n in range (4,p+1):
+    v, h, f = shape(n)
+    vlist(n,v,f)
 
 v, h, f = shape(8)
 vlist(len(v),v,f)
