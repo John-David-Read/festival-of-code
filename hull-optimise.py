@@ -55,11 +55,11 @@ vm = np.vstack([vm,[0,sin(phi),-cos(phi)]])
 vm = np.vstack([vm,[0,sin(3*phi),-cos(3*phi)]])
 
 # print the exact volume for the known 8 vertex shape
- print(round(polyhedron_volume(vm),12))
+print(round(polyhedron_volume(vm),12))
 
-for n in range(4,8):
+for n in range(4,13):
 
-     Initial guess for the vertices (random points on the unit sphere)
+    # Initial guess for the vertices (random points on the unit sphere)
     angle = angle_random(n)
 
     # Define the bounds for the string of angles
@@ -67,13 +67,14 @@ for n in range(4,8):
     bounds = [(0, 2*pi),(-pi/2,pi/2)] * n
 
     # Optimize the volume
-    result = op.minimize(lambda x: -volume(x), angle, bounds=bounds,tol=0.000000000000000001)
+    result_1 = op.minimize(lambda x: -volume(x), angle, bounds=bounds,tol=0.000000000000000001)
+    result_2 = op.minimize(lambda x: -volume(x), angle, bounds=bounds,tol=0.000000000000000001)
+    result_3 = op.minimize(lambda x: -volume(x), angle, bounds=bounds,tol=0.000000000000000001)
+    result_4 = op.minimize(lambda x: -volume(x), angle, bounds=bounds,tol=0.000000000000000001)
+    result_5 = op.minimize(lambda x: -volume(x), angle, bounds=bounds,tol=0.000000000000000001)
     
-    # Get the optimized angles
-    optimized_angles = result.x
-
     # Print the optimized angle volume
-    print(n,"|",round(volume(optimized_angles),12))
+    print(n,"|",max(round(volume(result_1.x),12),round(volume(result_1.x),12),round(volume(result_1.x),12)))
 
 # Plot the shape
 # plot(angle_vertices(optimized_angles),sp.ConvexHull(angle_vertices(optimized_angles)))
