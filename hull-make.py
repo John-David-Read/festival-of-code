@@ -86,7 +86,7 @@ def shape(pts):
     face = face.astype(int)
     return (vert,hull,face)
 
-def vlist(pts,vert,hull,face):
+def vlist(pts,vert,face):
     v_shape = polyhedron_volume(vert, face)
     sa_shape = polyhedron_surface_area(vert, face)
     print("vertices:",pts,"Volume:",v_shape,"Surface Area:",sa_shape)
@@ -124,12 +124,12 @@ p = 20
 
 #for n in range (4,p+1):
 #    v, h, f = shape(n)
-#    vlist(n,v,h,f)
+#    vlist(n,v,f)
 
 v, h, f = shape(8)
-vlist(len(v),v,h,f)
+vlist(len(v),v,f)
 
 v2, h2, f2 = minshapeeight()
-vlist(len(v2),v2,h2,f2)
+vlist(len(v2),v2,f2)
 
 plot(v2,h2)
