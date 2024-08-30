@@ -57,7 +57,7 @@ vm = np.vstack([vm,[0,sin(3*phi),-cos(3*phi)]])
 # print the exact volume for the known 8 vertex shape
 print("8 |",round(polyhedron_volume(vm),12),"exact")
 
-for n in range(4,13):
+for n in range(4,16):
 
     # Initial guess for the vertices (random points on the unit sphere)
     angle = angle_random(n)
@@ -91,4 +91,5 @@ for n in range(4,13):
                     ,volume(result_10.x))))
 
 # Plot the shape
+# optimised_vertices = result_1.x
 # plot(angle_vertices(optimized_angles),sp.ConvexHull(angle_vertices(optimized_angles)))
