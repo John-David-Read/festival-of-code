@@ -55,7 +55,7 @@ vm = np.vstack([vm,[0,sin(phi),-cos(phi)]])
 vm = np.vstack([vm,[0,sin(3*phi),-cos(3*phi)]])
 
 # print the exact volume for the known 8 vertex shape
-print("8 |",round(polyhedron_volume(vm),12),"extact")
+print("8 |",round(polyhedron_volume(vm),12),"exact")
 
 for n in range(4,13):
 
@@ -79,16 +79,16 @@ for n in range(4,13):
     result_10 = op.minimize(lambda x: -volume(x), angle, bounds=bounds,tol=0.000000000000000001)
     
     # Print the optimized angle volume
-    print(n,"|",max(round(volume(result_1.x),12)
-                    ,round(volume(result_2.x),12)
-                    ,round(volume(result_3.x),12)
-                    ,round(volume(result_4.x),12)
-                    ,round(volume(result_5.x),12)
-                    ,round(volume(result_6.x),12)
-                    ,round(volume(result_7.x),12)
-                    ,round(volume(result_8.x),12)
-                    ,round(volume(result_9.x),12)
-                    ,round(volume(result_10.x),12)))
+    print(n,"|",'{0:1.13g}'.format(max(volume(result_1.x)
+                    ,volume(result_2.x)
+                    ,volume(result_3.x)
+                    ,volume(result_4.x)
+                    ,volume(result_5.x)
+                    ,volume(result_6.x)
+                    ,volume(result_7.x)
+                    ,volume(result_8.x)
+                    ,volume(result_9.x)
+                    ,volume(result_10.x))))
 
 # Plot the shape
 # plot(angle_vertices(optimized_angles),sp.ConvexHull(angle_vertices(optimized_angles)))
