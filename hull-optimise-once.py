@@ -53,7 +53,7 @@ def compare(this_volume,local_maxima):
     return True
 
 #run for n and collect succesive maximum volumes
-n = 20
+n = 8
 local_maxima = []
 
 for i in range(1,25):
