@@ -53,10 +53,10 @@ def compare(this_volume,local_maxima):
     return True
 
 #run for n and collect succesive maximum volumes
-n = 30
+n = 26
 local_maxima = []
 
-for i in range(1,25):
+for i in range(1,10):
     angle = angle_random(n)
     bounds = []
     bounds = [(0, 2*pi),(-pi/2,pi/2)] * n
