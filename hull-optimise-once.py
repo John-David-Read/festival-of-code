@@ -1,9 +1,10 @@
-import numpy as np
-import random
-from math import pi, sin, cos, asin
-import scipy.spatial as sp
-import scipy.optimize as op
-import matplotlib.pyplot as pp
+#import libraries 
+import numpy as np # numpy to stack vectors in matrices
+import random # random to generate random numbers
+from math import pi, sin, cos, asin # maths functions used
+import scipy.spatial as sp # sci py algorithms for calculating convex hulls , spatial transformation etc. 
+import scipy.optimize as op # sci py algorithms for optimising on several variables
+import matplotlib.pyplot as pp # mathplot lib to plot shapes including polyhedra
 
 # Function to calculate the volume of a polyhedron given its vertices
 def polyhedron_volume(vertices):
@@ -43,6 +44,7 @@ def plot(vert,hull):
         pp.plot(vert[sx,0],vert[sx,1],vert[sx,2],'k-')
     pp.show()
 
+#function to compare volume against list of local maxima already found to see if this one is larger
 def compare(this_volume,local_maxima):
     if local_maxima == []:
         return True
@@ -52,11 +54,11 @@ def compare(this_volume,local_maxima):
             return False
     return True
 
-#run for n and collect succesive maximum volumes
-n = 27
+#run for n vertices and collect succesive maximum volumes listing the local maxima found
+n = 28
 local_maxima = []
 
-for i in range(1,200):
+for i in range(1,500):
     angle = angle_random(n)
     bounds = []
     bounds = [(0, 2*pi),(-pi/2,pi/2)] * n
@@ -70,6 +72,7 @@ for i in range(1,200):
 optimised_angles = result_max.x
 optimised_vertices = angle_vertices(optimised_angles)
 
+# output the angles , vertices and volume for the maxium volume polyhedron found
 print(optimised_angles)
 print()
 print(optimised_vertices)
