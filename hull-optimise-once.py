@@ -42,6 +42,7 @@ def plot(vert,hull):
     for sx in hull.simplices:
         sx = np.append(sx,sx[0])
         pp.plot(vert[sx,0],vert[sx,1],vert[sx,2],'k-')
+    ax.set_axis_off()
     pp.show()
 
 #function to compare volume against list of local maxima already found to see if this one is larger
@@ -55,10 +56,10 @@ def compare(this_volume,local_maxima):
     return True
 
 #run for n vertices and collect succesive maximum volumes listing the local maxima found
-n = 28
+n = 8
 local_maxima = []
 
-for i in range(1,500):
+for i in range(1,100):
     angle = angle_random(n)
     bounds = []
     bounds = [(0, 2*pi),(-pi/2,pi/2)] * n

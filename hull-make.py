@@ -120,16 +120,16 @@ def minshapeeight():
     fm = fm.astype(int)
     return vm, hm, fm
 
-p = 20
+p = 9
 
-for n in range (1,p+1):
+for n in range (4,p+1):
     v, h, f = shape(n)
     vlist(n,v,f)
 
-v, h, f = shape(8)
+v, h, f = shape(5)
 vlist(len(v),v,f)
 
 v2, h2, f2 = minshapeeight()
 vlist(len(v2),v2,f2)
 
-plot(v2,h2)
+plot(v,h)

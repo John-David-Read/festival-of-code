@@ -26,4 +26,5 @@ ax.plot(s_a[:,0],s_a[:,1],s_a[:,2],"ko")
 for sx in hull.simplices:
     sx = np.append(sx,sx[0])
     pp.plot(s_a[sx,0],s_a[sx,1],s_a[sx,2],'k-')
+ax.set_axis_off()
 pp.show()
