@@ -59,4 +59,5 @@ pp.rcParams["figure.autolayout"] = True
 fig = pp.figure()
 ax = fig.add_subplot(projection='3d')
 ax.plot(points[:,0],points[:,1],points[:,2],"ko")
+ax.set_aspect('equal')
 pp.show()

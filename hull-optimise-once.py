@@ -39,6 +39,7 @@ def plot(vert,hull):
     fig = pp.figure()
     ax = fig.add_subplot(projection='3d')
     ax.plot(vert[:,0],vert[:,1],vert[:,2],"ko")
+    ax.set_aspect('equal')
     for sx in hull.simplices:
         sx = np.append(sx,sx[0])
         pp.plot(vert[sx,0],vert[sx,1],vert[sx,2],'k-')
@@ -84,3 +85,4 @@ print(local_maxima)
                            
 # Plot the shape
 plot(optimised_vertices,sp.ConvexHull(optimised_vertices))
+
