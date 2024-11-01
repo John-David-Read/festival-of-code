@@ -10,6 +10,10 @@ def polyhedron_volume(vertices):
     hull = sp.ConvexHull(vertices)
     return hull.volume
 
+def polyherdron_surface_area(vertices):
+    hull = sp.ConvexHull(vertices)
+    return hull.area
+
 # Function to calculate a vertices matrix from a list of angles
 def angle_vertices(angle):
     vert = np.empty((0,3))
@@ -30,6 +34,9 @@ def angle_random(n):
 # function to return the polyhedron volume given the angles
 def volume(angle):
     return (polyhedron_volume(angle_vertices(angle)))
+
+def area(angle):
+    return (polyherdron_surface_area(angle_vertices(angle)))
 
 # function to plot the shape
 def plot(vert,hull):
@@ -80,7 +87,7 @@ for n in range(4,16):
     result_10 = op.minimize(lambda x: -volume(x), angle, bounds=bounds,tol=0.000000000000000001)
     
     # Print the optimized angle volume
-    print(n,"|",'{0:1.13g}'.format(max(volume(result_1.x)
+    print(n,"| Volume |",'{0:1.13g}'.format(max(volume(result_1.x)
                     ,volume(result_2.x)
                     ,volume(result_3.x)
                     ,volume(result_4.x)
@@ -91,6 +98,18 @@ for n in range(4,16):
                     ,volume(result_9.x)
                     ,volume(result_10.x))))
 
+   # Print the optimized angle suraface area
+    print(n,"| Surface Area |",'{0:1.13g}'.format(max(area(result_1.x)
+                    ,area(result_2.x)
+                    ,area(result_3.x)
+                    ,area(result_4.x)
+                    ,area(result_5.x)
+                    ,area(result_6.x)
+                    ,area(result_7.x)
+                    ,area(result_8.x)
+                    ,area(result_9.x)
+                    ,area(result_10.x))))
+    
 #rerun for n is 9 , the first unproven maxium
 n = 9
 angle = angle_random(n)
