@@ -1,4 +1,4 @@
-import math
+from math import exp
 
 def factorial(n):
     """
@@ -9,7 +9,7 @@ def factorial(n):
     else:
         return n * factorial(n-1)
 
-def exp(x,terms):
+def expo(x,terms):
     """
     Sums terms of Taylor series of e**x.
     """
@@ -20,7 +20,7 @@ def exp(x,terms):
 
 for terms in range(1,19):
     print("{} terms:".format(terms))
-    expapprox = exp(1,terms)
+    expapprox = expo(1,terms)
     print("Approximation: {}.".format(expapprox))
-    print("math.pi: {}.".format(math.exp(1)))
-    print("Error: {}.\n".format(math.exp(1) - expapprox))
+    print("math.pi: {}.".format(exp(1)))
+    print("Error: {}.\n".format(exp(1) - expapprox))

@@ -1,5 +1,5 @@
-from tkinter import * 
-from tkinter.ttk import *
+from tkinter import Tk, Canvas, StringVar, Frame, Label, Entry, Button
+# from tkinter.ttk import *
 from random import randint
 from time import sleep
 from math import floor
@@ -44,8 +44,8 @@ Label(rules_frame, text='Loneliness l=', width=15, anchor="e").grid(column=0, ro
 Label(rules_frame, text='Overcrowding o=', width=15, anchor="e").grid(column=0, row=1)
 Label(rules_frame, text='Empty between e1=', width=15, anchor="e").grid(column=0, row=2)
 Label(rules_frame, text='to e2=', width=15, anchor="e").grid(column=0, row=3)
-l = Entry(rules_frame, width=5) # dies by loneliness
-l.grid(column=1, row=0)
+le = Entry(rules_frame, width=5) # dies by loneliness
+le.grid(column=1, row=0)
 o = Entry(rules_frame, width=5) # dies by overpopulation
 o.grid(column=1, row=1)
 e1 = Entry(rules_frame, width=5) # reproduction range start
@@ -72,8 +72,8 @@ G = Entry(nh_frame, width=3)
 G.grid(column=0,row=2)
 H = Entry(nh_frame, width=3)
 H.grid(column=1,row=2)
-I = Entry(nh_frame, width=3)
-I.grid(column=2,row=2)
+J = Entry(nh_frame, width=3)
+J.grid(column=2,row=2)
 nh_frame.pack()
 
 menu_frame.grid(column=1, row=1)
@@ -82,7 +82,7 @@ menu_frame.grid(column=1, row=1)
 rows_entry.insert(0, "100")
 cols_entry.insert(0, "140")
 cell_size_entry.insert(0, "10")
-l.insert(0, "2")
+le.insert(0, "2")
 o.insert(0, "3")
 e1.insert(0, "3")
 e2.insert(0, "3")
@@ -94,7 +94,7 @@ E.insert(0, "0")
 F.insert(0, "1")
 G.insert(0, "1")
 H.insert(0, "1")
-I.insert(0, "1")
+J.insert(0, "1")
 
 run1 = True
 run = True
@@ -139,7 +139,7 @@ for r in range(rows):
     for c in range(cols):
         thisgrid.append(randint(0,1))
 
-neighbour_weights = [int(A.get()),int(B.get()),int(C.get()),int(D.get()),int(E.get()),int(F.get()),int(G.get()),int(H.get()),int(I.get())]
+neighbour_weights = [int(A.get()),int(B.get()),int(C.get()),int(D.get()),int(E.get()),int(F.get()),int(G.get()),int(H.get()),int(J.get())]
 
 
 
@@ -191,7 +191,7 @@ while run:
             
             try:
                 if prevgrid[position] == 1:
-                    if thissum < int(l.get()) or thissum > int(o.get()):
+                    if thissum < int(le.get()) or thissum > int(o.get()):
                         thisgrid[position] = 0
                 elif thissum >= int(e1.get()) and thissum <= int(e2.get()):
                     thisgrid[position] = 1

@@ -1,3 +1,4 @@
+import math
 def itan(x,terms):
     """
     Sums terms of Taylor series of inverse tan of x.
@@ -11,7 +12,7 @@ terms = 4
 piapprox = 16 * itan(1/5,terms) - 4 * itan(1/239,terms)
 print("Approximation: {}.".format(piapprox))
 
-import math
+
 print("math.pi: {}.".format(math.pi))
 print("Error: {}.\n".format(math.pi - piapprox))
 

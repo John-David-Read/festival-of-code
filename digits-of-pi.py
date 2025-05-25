@@ -9,10 +9,10 @@ from decimal import getcontext, Decimal
 import sys
 
 if len(sys.argv) < 2:
-    print('Not enough arguments')
-    quit()
+    precision = 1000
+else:
+    precision = int(sys.argv[1])
 
-precision = int(sys.argv[1])
 excess_prec = 2
 
 prec_cur = 100 if precision > 100 else precision
